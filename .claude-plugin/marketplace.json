@@ -1,0 +1,11 @@
+{
+  "name": "calude-mods",
+  "owner": { "name": "Jota (Jorge Roldán)" },
+  "plugins": [
+    {
+      "name": "progreso",
+      "source": "./plugins/progreso",
+      "description": "Panel lateral con los pasos del plan de Claude (pendiente / en curso / hecho), guardado entre sesiones por proyecto."
+    }
+  ]
+}

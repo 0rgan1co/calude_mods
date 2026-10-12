@@ -1,0 +1,6 @@
+{
+  "name": "progreso",
+  "version": "0.1.0",
+  "description": "Panel lateral con los pasos del plan de Claude (pendiente / en curso / hecho), guardado entre sesiones por proyecto.",
+  "types": "./types/index.d.ts"
+}
