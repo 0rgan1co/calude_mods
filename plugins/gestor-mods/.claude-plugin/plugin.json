@@ -1,0 +1,6 @@
+{
+  "name": "gestor-mods",
+  "version": "0.1.0",
+  "description": "Panel /mods: lista tus mods, los enciende o apaga, y archiva los que ya no sirven.",
+  "types": "./types/index.d.ts"
+}
