@@ -19,3 +19,11 @@ Panel lateral **Progreso** con los pasos del plan de Claude:
 - `/progreso` reabre el panel · `/progreso limpiar` lo vacía.
 
 Desarrollo: `claude plugin validate plugins/progreso` · `claude plugin test plugins/progreso`.
+
+### gestor-mods
+Panel **Mods** (`/mods`) con todos tus mods (plugins con hooks de función):
+● encendido · ○ apagado, con versión y descripción.
+
+- **Apagar / Encender:** mods instalados vía `claude plugin disable|enable`; mods de carpeta editando `CLAUDE_CODE_PLUGIN_DIRS` en `~/.claude/settings.json` (deja copia en `settings.json.bak-gestor-mods`).
+- **Eliminar** (pide confirmación): instalados → `claude plugin uninstall`; de carpeta → se apagan y se mueven a `~/.claude/mods-archivo/<nombre>-<fecha>` (reversible).
+- Los cambios se aplican al reiniciar Claude Code. No se lista ni se borra a sí mismo.
