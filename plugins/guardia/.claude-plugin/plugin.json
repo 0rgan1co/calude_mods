@@ -1,0 +1,12 @@
+{
+  "name": "guardia",
+  "version": "0.1.0",
+  "description": "Guardia de Bash para la infraestructura de Jota: frena comandos que tocan el contenedor de Hermes, el bridge de WhatsApp, rm remoto por ssh y git push --force-with-lease, y pide confirmación escrita antes de ejecutarlos.",
+  "types": "./types/index.d.ts",
+  "author": {
+    "name": "Jota (Jorge Roldán)",
+    "url": "https://github.com/0rgan1co"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/0rgan1co/calude_mods"
+}

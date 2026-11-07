@@ -13,6 +13,11 @@
       "name": "gestor-mods",
       "source": "./plugins/gestor-mods",
       "description": "Panel /mods: lista tus mods, los enciende o apaga, y archiva los que ya no sirven."
+    },
+    {
+      "name": "guardia",
+      "source": "./plugins/guardia",
+      "description": "Guardia de Bash para la infraestructura: frena lo que toca el contenedor de Hermes, el bridge de WhatsApp, rm remoto por ssh y git push --force-with-lease, y pide confirmación escrita."
     }
   ]
 }

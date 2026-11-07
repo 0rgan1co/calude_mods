@@ -6,6 +6,8 @@ Mods de Claude Code de Jota.
 
 ```
 /plugin install progreso --marketplace 0rgan1co/calude_mods
+/plugin install gestor-mods --marketplace 0rgan1co/calude_mods
+/plugin install guardia --marketplace 0rgan1co/calude_mods
 ```
 
 ## Mods
@@ -27,3 +29,25 @@ Panel **Mods** (`/mods`) con todos tus mods (plugins con hooks de función):
 - **Apagar / Encender:** mods instalados vía `claude plugin disable|enable`; mods de carpeta editando `CLAUDE_CODE_PLUGIN_DIRS` en `~/.claude/settings.json` (deja copia en `settings.json.bak-gestor-mods`).
 - **Eliminar** (pide confirmación): instalados → `claude plugin uninstall`; de carpeta → se apagan y se mueven a `~/.claude/mods-archivo/<nombre>-<fecha>` (reversible).
 - Los cambios se aplican al reiniciar Claude Code. No se lista ni se borra a sí mismo.
+
+### guardia
+Guardia de Bash para la infraestructura crítica. Complementa a `launch-codes` (OneWave) con lo que ese mod no mira:
+
+| Regla | Qué frena |
+|---|---|
+| `hermes-docker` | `docker rm / kill / stop / compose down` que nombre a `hermes` (también por `ssh`) |
+| `docker-prune` | `docker system prune` / `docker volume prune` |
+| `whatsapp-launchctl` | `launchctl unload / bootout / remove / kill / stop / disable` de `com.whatsapp.*` |
+| `whatsapp-kill` | `pkill` / `killall` que nombre a `whatsapp` |
+| `whatsapp-rm` | `rm` sobre rutas de `~/whatsapp-mcp` |
+| `ssh-rm` | `rm` recursivo dentro de un comando `ssh` |
+| `git-force-with-lease` | `git push --force-with-lease` / `--force-if-includes` |
+
+- Ante un match abre el diálogo de preguntas de Claude Code: **Abortar** (default) o escribir `ejecutar` en Other para correrlo igual. Nada más lo habilita.
+- **Falla cerrado**: si el hook falla o no hay nadie que responda (sesión headless, tareas programadas), el comando queda denegado y Claude recibe el motivo con la orden de no reintentar.
+- Deja pasar `docker restart/logs/exec`, `launchctl load/kickstart`, `rm -rf` local corriente y `git push --force` a secas (esos dos son de launch-codes), y `rsync --delete`.
+- Sin red, sin procesos, sin archivos, sin sonido. Un contador en la línea de estado (`guardia: N frenados`).
+- `/guardia` lista las reglas · `/guardia test <comando>` muestra el veredicto sin ejecutar nada.
+
+Instalar: `/plugin install guardia@calude-mods` (el marketplace `0rgan1co/calude_mods` ya está agregado).
+Desarrollo: `claude plugin validate plugins/guardia` · `claude plugin test plugins/guardia`.
